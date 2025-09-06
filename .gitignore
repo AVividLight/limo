@@ -85,6 +85,8 @@ makefile
 # unrar files for non flatpak build
 unrar
 
+loot/*
+
 # flatpak building
 fp-build
 
