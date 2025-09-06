@@ -118,6 +118,15 @@ cd ..
 
 #### Obtain LibLoot shared object and headers
 
+Run
+
+```bash
+docker build -t libloot-build .
+rm -rf ./build/loot
+mkdir -p ./build/loot
+docker run --rm -v ./build/loot:/output libloot-build
+```
+
 Copy to `build/loot/`
 
 #### Build Limo:
