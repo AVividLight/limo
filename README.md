@@ -116,11 +116,15 @@ make lib
 cd ..
 ```
 
+#### Obtain LibLoot shared object and headers
+
+Copy to `build/loot/`
+
 #### Build Limo:
 
 ```
 mkdir build
-cmake -DCMAKE_BUILD_TYPE=Release -S . -B build
+cmake -DCMAKE_BUILD_TYPE=Release -DLIBLOOT_PATH=./build/loot -S . -B build
 cmake --build build
 ```
  
