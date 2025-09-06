@@ -14,6 +14,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 option(IS_FLATPAK "Whether this is being built for a flatpak." OFF)
 option(USE_SYSTEM_LIBUNRAR "Whether to use the system version of libunrar." OFF)
 
+include(FetchContent)
+
 # jsoncpp
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(JSONCPP jsoncpp)
@@ -26,7 +28,8 @@ pkg_check_modules(PUGIXML pugixml)
 find_package(pugixml REQUIRED)
 
 # cpr
-find_package(cpr REQUIRED)
+FetchContent_Declare(cpr GIT_REPOSITORY https://github.com/libcpr/cpr.git GIT_TAG 1.12.0)
+FetchContent_MakeAvailable(cpr)
 
 # OpenSSL
 find_package(OpenSSL REQUIRED)
