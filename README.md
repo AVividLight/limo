@@ -131,7 +131,7 @@ docker run --rm -v ./loot:/output libloot-build
 
 ```
 mkdir build
-cmake -DCMAKE_BUILD_TYPE=Release -DLIBLOOT_PATH=./build/loot -S . -B build
+cmake -DCMAKE_BUILD_TYPE=Release -DLIBLOOT_INCLUDE_DIR=loot -DLIBLOOT_PATH=$PWD/loot/libloot.so -S . -B build
 cmake --build build
 ```
  
