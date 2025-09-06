@@ -122,12 +122,10 @@ Run
 
 ```bash
 docker build -t libloot-build .
-rm -rf ./build/loot
-mkdir -p ./build/loot
-docker run --rm -v ./build/loot:/output libloot-build
+rm -rf ./loot
+mkdir -p ./loot
+docker run --rm -v ./loot:/output libloot-build
 ```
-
-Copy to `build/loot/`
 
 #### Build Limo:
 
