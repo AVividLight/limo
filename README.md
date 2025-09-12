@@ -61,9 +61,9 @@ longer active.
 	<img width='240' alt='Get on AUR' src='https://upload.wikimedia.org/wikipedia/commons/e/e8/Archlinux-logo-standard-version.png'/>
 </a>
 
-### Build from source
+### Build from source (follow these steps in order)
 
-####  Install the dependencies
+#### Install the dependencies
 
  - [Qt5](https://doc.qt.io/qt-5/index.html)
  - [JsonCpp](https://github.com/open-source-parsers/jsoncpp)
@@ -77,39 +77,43 @@ longer active.
 
 On Debian based systems most dependencies, with the exception of cpr and libloot, can be installed with the following command:
 
-```
+```bash
 sudo apt install \
-		build-essential \
-		cmake \
-		git \
-		libpugixml-dev \
-		libjsoncpp-dev \
-		libarchive-dev \
-		pkg-config \
-		libssl-dev \
-		qtbase5-dev \
-		qtchooser \
-		qt5-qmake \
-		qtbase5-dev-tools \
-		libqt5svg5-dev \
-		libboost-all-dev \
-		libtbb-dev \
-		cargo \
-		cbindgen \
-		catch2 \
-		doxygen		
+build-essential \
+cmake \
+git \
+libpugixml-dev \
+libjsoncpp-dev \
+libarchive-dev \
+pkg-config \
+libssl-dev \
+qtbase5-dev \
+qtchooser \
+qt5-qmake \
+qtbase5-dev-tools \
+libqt5svg5-dev \
+libboost-all-dev \
+libtbb-dev \
+cargo \
+cbindgen \
+catch2 \
+doxygen
 ```
 
-#### Clone this repository:
+#### Clone limo
 
-```
-git clone https://github.com/limo-app/limo.git
+If you're reading this README from GitHub.com, clone limo to your computer via:
+
+```bash
+git clone https://github.com/AVividLight/limo
 cd limo
 ```
 
-#### Build libunrar:
+#### Build libunrar
 
-```
+For this and the coming instructions: run from within your cloned `limo` folder, following on from the previous steps.
+
+```bash
 git clone https://github.com/aawc/unrar.git
 cd unrar
 make lib
@@ -118,8 +122,6 @@ cd ..
 
 #### Obtain LibLoot shared object and headers
 
-Run
-
 ```bash
 docker build -t libloot-build .
 rm -rf ./loot
@@ -127,27 +129,31 @@ mkdir -p ./loot
 docker run --rm -v ./loot:/output libloot-build
 ```
 
-#### Build Limo:
+#### Build Limo
 
-```
+```bash
 mkdir build
 cmake -DCMAKE_BUILD_TYPE=Release -DLIBLOOT_INCLUDE_DIR=loot -DLIBLOOT_PATH=$PWD/loot/libloot.so -S . -B build
 cmake --build build
 ```
- 
-#### (Optional) Run the tests:
 
-```
+#### (Optional) Run the tests
+
+```bash
 cmake -DCMAKE_BUILD_TYPE=Release -S . -B build -DBUILD_TESTING=ON
 cmake --build build
 ctest --test-dir build
 ```
 
-#### (Optional) Build the documentation:
+#### (Optional) Build the documentation
 
-```
+```bash
 doxygen src/lmm_Doxyfile
 ```
+
+#### Launch Limo
+
+If all previous steps succeeded, you should have a [Limo](build/Limo) program in the build folder. Copy it out to a safe location and double-click to run!
 
 ## Usage Notes
 
